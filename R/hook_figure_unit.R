@@ -1,9 +1,10 @@
-#' Specify figure size with a preferred unit
+#' Change the unit of figure size
 #'
 #' By default, figure size of R Markdown is specified with inches.
 #' This function changes the default unit.
 #'
-#' Must wait for solving <https://github.com/yihui/knitr/issues/1876>.
+#' As a side effect, `fig.retina` is set to `NULL` because of
+#' <https://github.com/yihui/knitr/issues/1876>.
 #'
 #' @param unit A string of an unit (default: "mm"). Available units follow.
 #'  `measurements::conv_unit_options$length`
@@ -21,10 +22,12 @@ hook_figure_unit <- function(unit = "mm") {
     return(invisible(NULL))
   }
 
+  message('fig.retina is set NULL')
+
   coefficient = measurements::conv_unit(1, unit, "inch")
 
   hook_height <- function(options) {
-    options$fig.hegiht <- options$fig.hegiht * coefficient
+    options$fig.height <- options$fig.height * coefficient
     return(options)
   }
 
@@ -34,10 +37,14 @@ hook_figure_unit <- function(unit = "mm") {
   }
 
   knitr::opts_chunk$set(
+    fig.retina = NULL,
     fig.height = knitr::opts_chunk$get("fig.height") / coefficient,
     fig.width = knitr::opts_chunk$get("fig.width") / coefficient
   )
-  knitr::opts_hooks$set(fig.height = hook_height, fig.width = hook_width)
+  knitr::opts_hooks$set(
+    fig.height = hook_height,
+    fig.width = hook_width
+  )
 
   return(invisible(NULL))
 }
