@@ -2,15 +2,21 @@ Package: chunkhooks
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person(given = "Atsushi",
+           family = "Yasumoto",
+           role = c("aut", "cph", "cre"),
+           email = "atusy.rpkg@gmail.com",
+           comment = c(ORCID = "0000-0002-8335-495X"))
+Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+License: MIT + file LICENSE
+URL: https://chunkhooks.atusy.net,
+    https://github.com/atusy/chunkhooks
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Suggests: 
+    spelling,
+    testthat
