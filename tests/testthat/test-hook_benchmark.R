@@ -5,9 +5,9 @@ init <- function() {
 
 test_that("Set chunk options and hooks", {
   init()
-  hook <- hook_benchmark()
+  hook <- hook_benchmark(default = TRUE)
   testthat::expect_type(hook, "closure")
-  expect_null(knitr::opts_chunk$get("benchmark"))
+  expect_true(knitr::opts_chunk$get("benchmark"))
   expect_identical(knitr::knit_hooks$get("benchmark"), hook)
 })
 
