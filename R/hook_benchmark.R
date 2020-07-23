@@ -13,8 +13,10 @@
 #' the second argument of the `format`ting function.
 #'
 #' @param trigger A name of chunk option that triggers benchmark (default:
-#'  `"benchmark"`). A value of option must be other than `NULL` (default) in
-#'  order to perform a benchmark.
+#'  `"benchmark"`). In order to trigger benchmark, specify `TRUE` as a
+#'  value of this option.
+#' @param default A default value for the chunk option that `trigger`s
+#'  the hook (default: `NULL`).
 #' @param format A function to format a benchmark result (default:
 #'  `format_benchmark`). It must accept two arguments, where the first is the
 #'  benchmark result and the second is the list of current chunk options.
@@ -30,9 +32,16 @@
 #'
 #' @name benchmark
 #' @export
-hook_benchmark <- function(trigger = "benchmark", format = format_benchmark) {
+set_benchmark <- function(trigger = "benchmark",
+                           default = NULL,
+                           format = format_benchmark) {
+  force(trigger)
   format <- check_format_benchmark(format)
   hook <- function(before, options, envir) {
+    if (!isTRUE(knitr::opts_current$get(trigger))) {
+      return(NULL)
+    }
+
     t <- proc.time()['elapsed']
     if (before) {
       assign(options$label, t, envir = benchmarks)
@@ -44,7 +53,8 @@ hook_benchmark <- function(trigger = "benchmark", format = format_benchmark) {
     }
   }
 
-  do.call(knitr::knit_hooks$set, stats::setNames(list(hook), trigger))
+  set(knitr::opts_chunk, trigger, list(default))
+  set(knitr::knit_hooks, trigger, list(hook))
   return(invisible(NULL))
 }
 
