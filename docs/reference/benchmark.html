@@ -75,7 +75,7 @@ See examples for the default printing format by format_benchmark." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">chunkhooks</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
       </span>
     </div>
 
@@ -211,7 +211,7 @@ the second argument of the <code>format</code>ting function.</p>
 
 <span class='co'># Example of the default output format</span>
 <span class='co'># Input is sec. Output is prettified.</span>
-<span class='fu'>format_benchmark</span>(<span class='fl'>1234</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sprintf("%s: %s", options$label, prettyunits::pretty_sec(result)): argument "options" is missing, with no default</span></div><div class='input'>
+<span class='fu'>format_benchmark</span>(<span class='fl'>1234</span>, <span class='kw'>options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"example-chunk"</span>))</div><div class='output co'>#&gt; [1] "example-chunk: 20m 34s"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
