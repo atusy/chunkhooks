@@ -33,7 +33,7 @@ As the above result shows, output format contains chunk label.
 I recommend specifying chunk options explicitly.
 Note that this function is experimental, and format may change in the future.
 
-# Fomatting results
+# Formatting results
 
 If you do not like the default formatting, you may provide original function to
 the `format` argument.

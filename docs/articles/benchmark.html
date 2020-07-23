@@ -107,12 +107,12 @@
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># benchmark=TRUE is specified as a chunk option</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">100</span>))
 <span class="co">#&gt; [1] 5050</span></pre></body></html></div>
-<p>bench1: 5ms</p>
+<p>bench1: 4ms</p>
 <p>As the above result shows, output format contains chunk label. I recommend specifying chunk options explicitly. Note that this function is experimental, and format may change in the future.</p>
 </div>
-<div id="fomatting-results" class="section level1">
+<div id="formatting-results" class="section level1">
 <h1 class="hasAnchor">
-<a href="#fomatting-results" class="anchor"></a>Fomatting results</h1>
+<a href="#formatting-results" class="anchor"></a>Formatting results</h1>
 <p>If you do not like the default formatting, you may provide original function to the <code>format</code> argument. The function takes a result of a benchmark in seconds as the first argument, and a list of current chunk options as the second argument. The example below shows the benchmark result as is. Make sure the formatting function returns a string.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/benchmark.html">hook_benchmark</a></span>(<span class="kw">format</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">options</span>) <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">x</span>))</pre></body></html></div>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">100</span>))
@@ -123,7 +123,7 @@
 <h1 class="hasAnchor">
 <a href="#insert-results-in-body-text" class="anchor"></a>Insert results in body text</h1>
 <p>If you need to insert the result with the text, use <code><a href="../reference/benchmark.html">chunkhooks::benchmarks</a></code> environment. This environment records all the benchmark results in seconds. You can extract a result by specifying a chunk label.</p>
-<p>For example, <code>r benchmarks$bench1</code> gives 0.004.</p>
+<p>For example, <code>r benchmarks$bench1</code> gives 0.003.</p>
 </div>
   </div>
 
