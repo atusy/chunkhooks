@@ -21,6 +21,9 @@
 #'  `format_benchmark`). It must accept two arguments, where the first is the
 #'  benchmark result and the second is the list of current chunk options.
 #'  `NULL` suppresses printing.
+#' @param .set `TRUE` or `FALSE` to set the hook.
+#'
+#' @return invisible hook function
 #'
 #' @examples
 #' # Set a hook that triggers benchmarks if the `time` chunk option is not `NULL`.
@@ -32,9 +35,10 @@
 #'
 #' @name benchmark
 #' @export
-set_benchmark <- function(trigger = "benchmark",
+hook_benchmark <- function(trigger = "benchmark",
                            default = NULL,
-                           format = format_benchmark) {
+                           format = format_benchmark,
+                           .set = TRUE) {
   force(trigger)
   format <- check_format_benchmark(format)
   hook <- function(before, options, envir) {
@@ -53,9 +57,12 @@ set_benchmark <- function(trigger = "benchmark",
     }
   }
 
-  set(knitr::opts_chunk, trigger, list(default))
-  set(knitr::knit_hooks, trigger, list(hook))
-  return(invisible(NULL))
+  if (.set) {
+    set(knitr::opts_chunk, trigger, list(default))
+    set(knitr::knit_hooks, trigger, list(hook))
+  }
+
+  return(invisible(hook))
 }
 
 #' @param result A result of benchmark

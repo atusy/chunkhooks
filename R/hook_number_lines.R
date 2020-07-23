@@ -7,8 +7,11 @@
 #'  automatically number lines (default: `"source"`). Choices are
 #'  `"source"`, `"output"`, `"message"`, `"warning"`, and/or `"error"`.`
 #'  `NULL` disables the automation.
+#' @param .set `TRUE` or `FALSE` to set the hook.
 #'
-hook_numberLines <- function(targets = "source") {
+#' @return invisible hook function
+#'
+hook_numberLines <- function(targets = "source", .set = TRUE) {
   targets <- if (!is.null(targets)) {
     match.arg(
       default,
@@ -16,12 +19,17 @@ hook_numberLines <- function(targets = "source") {
       several.ok = TRUE
     )
   }
+
   hook <- function(options) {
     targets <- paste0("class.", knitr::opts_current$get("numberLines"))
     options[targets] <- lapply(options[targets], append, "numberLines")
     return(options)
   }
-  knitr::opts_chunk$set(numberLines = targets)
-  knitr::opts_hooks$set(numberLines = hook)
-  return(invisible(NULL))
+
+  if (.set) {
+    knitr::opts_chunk$set(numberLines = targets)
+    knitr::opts_hooks$set(numberLines = hook)
+  }
+
+  return(invisible(hook))
 }

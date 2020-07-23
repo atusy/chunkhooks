@@ -8,43 +8,38 @@
 #'
 #' @param unit A string of an unit (default: "mm"). Available units follow.
 #'  `measurements::conv_unit_options$length`
+#' @param .set `TRUE` or `FALSE` to set the hook.
 #'
-#' @return invisible `NULL`
+#' @return invisible hook function
 #'
 #' @examples
 #' hook_figure_unit('mm')
 #'
 #' @export
-hook_figure_unit <- function(unit = "mm") {
+hook_figure_unit <- function(unit = "mm", .set = TRUE) {
   unit = match.arg(unit, measurements::conv_unit_options$length)
   if (unit == "inch") {
     message('inch is the default unit, and does not require hooks')
-    return(invisible(NULL))
+    return(invisible(identity))
   }
-
-  message('fig.retina is set NULL')
 
   coefficient = measurements::conv_unit(1, unit, "inch")
 
-  hook_height <- function(options) {
+  hook <- function(options) {
+    options$fig.width <- options$fig.width * coefficient
     options$fig.height <- options$fig.height * coefficient
     return(options)
   }
 
-  hook_width <- function(options) {
-    options$fig.width <- options$fig.width * coefficient
-    return(options)
+  if (.set) {
+    knitr::opts_chunk$set(
+      fig.retina = NULL,
+      fig.height = knitr::opts_chunk$get("fig.height") / coefficient,
+      fig.width = knitr::opts_chunk$get("fig.width") / coefficient
+    )
+    message('fig.retina is set NULL')
+    knitr::opts_hooks$set(fig.width = hook)
   }
 
-  knitr::opts_chunk$set(
-    fig.retina = NULL,
-    fig.height = knitr::opts_chunk$get("fig.height") / coefficient,
-    fig.width = knitr::opts_chunk$get("fig.width") / coefficient
-  )
-  knitr::opts_hooks$set(
-    fig.height = hook_height,
-    fig.width = hook_width
-  )
-
-  return(invisible(NULL))
+  return(invisible(hook))
 }
