@@ -1,8 +1,9 @@
 ## Test environments
 
-### devtools::check_win_release()
+### win-builder.r-project.org
 
 - x86_64-w64-mingw32 (64-bit) R 4.0.2
+- x86_64-w64-mingw32 (64-bit) R Under development (unstable) (2020-07-19 r78884)
 
 ### GitHub Actions
 
