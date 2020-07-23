@@ -14,6 +14,8 @@ Introduce chunk hooks for better experience with R Markdown.
 
 and more!
 
+Take a look at articles in pkgdown site <https://chunkhooks.atusy.net/articles/>
+
 ## Installation
 
 ``` r
