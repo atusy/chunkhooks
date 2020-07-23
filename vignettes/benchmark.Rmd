@@ -2,7 +2,7 @@
 title: "Benchmark chunks"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{benchmark}
+  %\VignetteIndexEntry{Benchmark chunks}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
