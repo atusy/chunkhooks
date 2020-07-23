@@ -31,7 +31,7 @@
 #'
 #' # Example of the default output format
 #' # Input is sec. Output is prettified.
-#' format_benchmark(1234)
+#' format_benchmark(1234, options = list(label = "example-chunk"))
 #'
 #' @name benchmark
 #' @export
@@ -73,7 +73,6 @@ format_benchmark <- function(result, options) {
   sprintf('%s: %s', options$label, prettyunits::pretty_sec(result))
 }
 
-#' @param
 #' @rdname benchmark
 #' @export
 benchmarks <- new.env()

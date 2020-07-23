@@ -64,7 +64,7 @@ hook_benchmark("time")
 
 # Example of the default output format
 # Input is sec. Output is prettified.
-format_benchmark(1234)
+format_benchmark(1234, options = list(label = "example-chunk"))
 
 }
 \keyword{datasets}
