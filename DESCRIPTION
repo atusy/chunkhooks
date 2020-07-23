@@ -1,6 +1,6 @@
 Package: chunkhooks
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Chunk Hooks for R Markdown
+Version: 0.0.1
 Authors@R: 
     person(given = "Atsushi",
            family = "Yasumoto",
@@ -8,7 +8,10 @@ Authors@R:
            email = "atusy.rpkg@gmail.com",
            comment = c(ORCID = "0000-0002-8335-495X"))
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
-Description: What the package does (one paragraph).
+Description:
+    Set chunk hooks for R Markdown documents, and improve user experience.
+    For example, change units of figure sizes, benchmark chunks, and number
+    lines on code blocks.
 License: MIT + file LICENSE
 URL: https://chunkhooks.atusy.net,
     https://github.com/atusy/chunkhooks
