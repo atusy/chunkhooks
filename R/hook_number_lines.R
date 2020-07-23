@@ -11,10 +11,14 @@
 #'
 #' @return invisible hook function
 #'
+#' @examples
+#' hook_numberLines("source")
+#'
+#' @export
 hook_numberLines <- function(targets = "source", .set = TRUE) {
   targets <- if (!is.null(targets)) {
     match.arg(
-      default,
+      targets,
       c("source", "output", "message", "warning", "error"),
       several.ok = TRUE
     )

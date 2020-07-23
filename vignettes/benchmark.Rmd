@@ -1,0 +1,60 @@
+---
+title: "Benchmark chunks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{benchmark}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+`hook_benchmark` adds the benchmark feature to chunks.
+To benchmark a chunk, specifying `benchmark=TRUE` as a chunk option.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Basic usage
+
+```{r setup}
+library(chunkhooks)
+hook_benchmark()
+```
+
+```{r bench1, benchmark=TRUE}
+# benchmark=TRUE is specified as a chunk option
+sum(seq(100))
+```
+
+As the above result shows, output format contains chunk label.
+I recommend specifying chunk options explicitly.
+Note that this function is experimental, and format may change in the future.
+
+# Fomatting results
+
+If you do not like the default formatting, you may provide original function to
+the `format` argument.
+The function takes a result of a benchmark in seconds as the first argument,
+and a list of current chunk options as the second argument.
+The example below shows the benchmark result as is.
+Make sure the formatting function returns a string.
+
+```{r}
+hook_benchmark(format = function(x, options) as.character(x))
+```
+
+```{r bench2, benchmark=TRUE}
+sum(seq(100))
+```
+
+# Insert results in body text
+
+If you need to insert the result with the text, use `chunkhooks::benchmarks` environment.
+This environment records all the benchmark results in seconds.
+You can extract a result by specifying a chunk label.
+
+For example, `` `r 'r'` benchmarks$bench1 `` gives `r benchmarks$bench1`.
+

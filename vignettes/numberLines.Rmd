@@ -1,0 +1,50 @@
+---
+title: "Number lines on code blocks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Number lines on code blocks}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The `hook_numberLines` function automates line numbering on code blocks.
+
+```{r setup}
+library(chunkhooks)
+hook_numberLines()
+```
+
+# Basic usage
+
+By default, the feature affects only source codes.
+
+```{r}
+# By default, Source lines are numbered
+"Output lines are not numbered"
+```
+
+The feature can be introduced to other types of code blocks as well, i.e.
+output, message, warning, and error.
+
+```{r}
+hook_numberLines(c("source", "output"))
+```
+
+```{r}
+# After `hook_numberLines(c("source", "output"))`,
+# Source lines are numbered
+"Output lines are also numbered"
+```
+
+In order to disable the feature on selected chunks, specify the `numberLines`
+chunk option that determines which types of code blocks need line numbers.
+
+```{r, numberLines="output"}
+# numberLines="output" is specified as a chunk option
+# Source lines are not numbered
+"Output lines are also numbered"
+```
+
+
+
+

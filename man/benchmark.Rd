@@ -11,7 +11,12 @@
 An object of class \code{environment} of length 0.
 }
 \usage{
-hook_benchmark(trigger = "benchmark", format = format_benchmark)
+hook_benchmark(
+  trigger = "benchmark",
+  default = NULL,
+  format = format_benchmark,
+  .set = TRUE
+)
 
 format_benchmark(result, options)
 
@@ -19,17 +24,25 @@ benchmarks
 }
 \arguments{
 \item{trigger}{A name of chunk option that triggers benchmark (default:
-\code{"benchmark"}). A value of option must be other than \code{NULL} (default) in
-order to perform a benchmark.}
+\code{"benchmark"}). In order to trigger benchmark, specify \code{TRUE} as a
+value of this option.}
+
+\item{default}{A default value for the chunk option that \code{trigger}s
+the hook (default: \code{NULL}).}
 
 \item{format}{A function to format a benchmark result (default:
 \code{format_benchmark}). It must accept two arguments, where the first is the
 benchmark result and the second is the list of current chunk options.
 \code{NULL} suppresses printing.}
 
+\item{.set}{\code{TRUE} or \code{FALSE} to set the hook.}
+
 \item{result}{A result of benchmark}
 
 \item{options}{A list of current chunk options}
+}
+\value{
+invisible hook function
 }
 \description{
 \code{hook_benchmark} sets a hook to benchmark chunks with the \code{benchmark=TRUE}

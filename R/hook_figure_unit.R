@@ -18,10 +18,6 @@
 #' @export
 hook_figure_unit <- function(unit = "mm", .set = TRUE) {
   unit = match.arg(unit, measurements::conv_unit_options$length)
-  if (unit == "inch") {
-    message('inch is the default unit, and does not require hooks')
-    return(invisible(identity))
-  }
 
   coefficient = measurements::conv_unit(1, unit, "inch")
 

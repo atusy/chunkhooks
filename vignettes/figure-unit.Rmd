@@ -1,0 +1,53 @@
+---
+title: Change the unit of figure size
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Change the unit of figure size}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+By default, R Markdown employs inch as a unit of figure size.
+You can change it by `hook_figure_unit`.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**CAUTIONS**
+
+* This hook must not run twice in a document. Otherwise, you will face unexpected figure size.
+* RStudio IDE do not detect the hook and treats `fig.width` and `fig.height` in inches.
+* This hook sets `NULL` to the `fig.retina` chunk option.
+
+# Basic usage
+
+`hook_figure_unit()` changes to the unit of figure size to millimeters.
+Note that this hook will not change the default size.
+
+```{r setup}
+library(chunkhooks)
+hook_figure_unit()
+```
+
+```{r, fig.width=50, fig.height=50}
+# fig.width=50, fig.height=50 (50mm * 50mm)
+plot(1)
+```
+
+## Other units
+
+You may change default unit by the first argument, `unit`.
+
+```{r, eval=FALSE}
+hook_figure_unit("cm")
+```
+
+Choices are followings:
+
+```{r}
+measurements::conv_unit_options$length
+```

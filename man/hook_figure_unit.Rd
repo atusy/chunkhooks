@@ -4,14 +4,16 @@
 \alias{hook_figure_unit}
 \title{Change the unit of figure size}
 \usage{
-hook_figure_unit(unit = "mm")
+hook_figure_unit(unit = "mm", .set = TRUE)
 }
 \arguments{
 \item{unit}{A string of an unit (default: "mm"). Available units follow.
 \code{measurements::conv_unit_options$length}}
+
+\item{.set}{\code{TRUE} or \code{FALSE} to set the hook.}
 }
 \value{
-invisible \code{NULL}
+invisible hook function
 }
 \description{
 By default, figure size of R Markdown is specified with inches.

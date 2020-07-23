@@ -23,4 +23,6 @@ Imports:
     prettyunits
 Suggests: 
     spelling,
-    testthat
+    testthat,
+    rmarkdown
+VignetteBuilder: knitr
