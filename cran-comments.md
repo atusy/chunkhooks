@@ -1,3 +1,11 @@
+## Resubmission
+
+This is a resubmission. In this version I have:
+
+* updated DESCRIPTION's Description field by
+    * adding reference of 'R Markdown'
+    * writing 'R Markdown' in single quotes
+
 ## Test environments
 
 ### win-builder.r-project.org
