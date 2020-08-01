@@ -1,5 +1,5 @@
 Package: chunkhooks
-Title: Chunk Hooks for R Markdown
+Title: Chunk Hooks for 'R Markdown'
 Version: 0.0.1
 Authors@R: 
     person(given = "Atsushi",
@@ -9,7 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-8335-495X"))
 Maintainer: Atsushi Yasumoto <atusy.rpkg@gmail.com>
 Description:
-    Set chunk hooks for R Markdown documents, and improve user experience.
+    Set chunk hooks for 'R Markdown' documents <https://rmarkdown.rstudio.com/>,
+    and improve user experience.
     For example, change units of figure sizes, benchmark chunks, and number
     lines on code blocks.
 License: MIT + file LICENSE
