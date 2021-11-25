@@ -7,7 +7,7 @@
 hook_title_comment(
   trigger = "title",
   default = "#' {label}.{engine}",
-  ...,
+  args = list(),
   .set = TRUE
 )
 }
@@ -20,7 +20,7 @@ by setting chunk options as an environment.
 If function, it must have \code{options} parameter which receives chunk options,
 and return a string.}
 
-\item{...}{Additional arguments given to \code{glue::glue()} or callable \code{default}.}
+\item{args}{A list of arguments given to \code{glue::glue()} or callable \code{default}.}
 
 \item{.set}{\code{TRUE} or \code{FALSE} to set a default value and a hook to the \code{trigger}.}
 }

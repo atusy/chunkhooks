@@ -9,8 +9,8 @@
 #'  by setting chunk options as an environment.
 #'  If function, it must have `options` parameter which receives chunk options,
 #'  and return a string.
-#' @param ...
-#'  Additional arguments given to `glue::glue()` or callable `default`.
+#' @param args 
+#'  A list of arguments given to `glue::glue()` or callable `default`.
 #' @param .set
 #'  `TRUE` or `FALSE` to set a default value and a hook to the `trigger`.
 #'
@@ -18,11 +18,11 @@
 hook_title_comment <- function(
   trigger = "title",
   default = "#' {label}.{engine}",
-  ...,
+  args = list(),
   .set = TRUE
 ) {
   force(trigger)
-  args <- list(...)
+  force(args)
   hook <- function(options) {
     title <- options[[trigger]]
     options$code <- c(
