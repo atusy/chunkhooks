@@ -17,7 +17,7 @@
 #' @export
 hook_title_comment <- function(
   trigger = "title",
-  default = "#' {label}.{engine}",
+  default = "# {label}.{engine}",
   args = list(),
   .set = TRUE
 ) {
