@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Benchmark chunks — benchmark • chunkhooks</title>
+<title>Comment syntax. — comment_syntax • chunkhooks</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,9 @@
 
 
 
-<meta property="og:title" content="Benchmark chunks — benchmark" />
-<meta property="og:description" content="hook_benchmark sets a hook to benchmark chunks with the benchmark=TRUE
-option. The name of the trigger chunk option can be changed via the
-chunk_option parameter. The result is printed right after chunk outputs.
-See examples for the default printing format by format_benchmark." />
+<meta property="og:title" content="Comment syntax. — comment_syntax" />
+<meta property="og:description" content="A named vector which defines comment syntax. This is internally used by
+hook_title_comment(), comment_title(), and comment_out()." />
 
 
 
@@ -132,88 +130,23 @@ See examples for the default printing format by format_benchmark." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Benchmark chunks</h1>
-    <small class="dont-index">Source: <a href='https://github.com/atusy/chunkhooks/blob/master/R/hook_benchmark.R'><code>R/hook_benchmark.R</code></a></small>
-    <div class="hidden name"><code>benchmark.Rd</code></div>
+    <h1>Comment syntax.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/atusy/chunkhooks/blob/master/R/hook_title_comment.R'><code>R/hook_title_comment.R</code></a></small>
+    <div class="hidden name"><code>comment_syntax.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>hook_benchmark</code> sets a hook to benchmark chunks with the <code>benchmark=TRUE</code>
-option. The name of the trigger chunk option can be changed via the
-<code>chunk_option</code> parameter. The result is printed right after chunk outputs.
-See examples for the default printing format by <code>format_benchmark</code>.</p>
+    <p>A named vector which defines comment syntax. This is internally used by
+<code><a href='hook_title_comment.html'>hook_title_comment()</a></code>, <code><a href='comment_title.html'>comment_title()</a></code>, and <code><a href='comment_out.html'>comment_out()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>hook_benchmark</span><span class='op'>(</span>
-  trigger <span class='op'>=</span> <span class='st'>"benchmark"</span>,
-  default <span class='op'>=</span> <span class='cn'>NULL</span>,
-  format <span class='op'>=</span> <span class='va'>format_benchmark</span>,
-  .set <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span>
+    <pre class="usage"><span class='va'>comment_syntax</span></pre>
 
-<span class='fu'>format_benchmark</span><span class='op'>(</span><span class='va'>result</span>, <span class='va'>options</span><span class='op'>)</span>
-
-<span class='va'>benchmarks</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>trigger</th>
-      <td><p>A name of chunk option that triggers benchmark (default:
-<code>"benchmark"</code>). In order to trigger benchmark, specify <code>TRUE</code> as a
-value of this option.</p></td>
-    </tr>
-    <tr>
-      <th>default</th>
-      <td><p>A default value for the chunk option that <code>trigger</code>s
-the hook (default: <code>NULL</code>).</p></td>
-    </tr>
-    <tr>
-      <th>format</th>
-      <td><p>A function to format a benchmark result (default:
-<code>format_benchmark</code>). It must accept two arguments, where the first is the
-benchmark result and the second is the list of current chunk options.
-<code>NULL</code> suppresses printing.</p></td>
-    </tr>
-    <tr>
-      <th>.set</th>
-      <td><p><code>TRUE</code> or <code>FALSE</code> to set the hook.</p></td>
-    </tr>
-    <tr>
-      <th>result</th>
-      <td><p>A result of benchmark</p></td>
-    </tr>
-    <tr>
-      <th>options</th>
-      <td><p>A list of current chunk options</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>environment</code> of length 0.</p>
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <p>An object of class <code>character</code> of length 38.</p>
 
-    <p>invisible hook function</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>benchmarks</code> records the results of benchmarks from chunks as a list named by
-chunk labels. If one requires complex formatting of benchmark results, then
-suppress automatic formatting by <code>hook_benchmark(format = NULL)</code>. Then,
-retrieve benchmark results from <code>benchmarks[["chunk-label"]]</code>. Furthermore,
-<code>format</code> can happen conditionally by utilizing current chunk options via
-the second argument of the <code>format</code>ting function.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Set a hook that triggers benchmarks if the `time` chunk option is not `NULL`.</span>
-<span class='fu'>hook_benchmark</span><span class='op'>(</span><span class='st'>"time"</span><span class='op'>)</span>
-
-<span class='co'># Example of the default output format</span>
-<span class='co'># Input is sec. Output is prettified.</span>
-<span class='fu'>format_benchmark</span><span class='op'>(</span><span class='fl'>1234</span>, options <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='st'>"example-chunk"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "example-chunk: 20m 34s"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

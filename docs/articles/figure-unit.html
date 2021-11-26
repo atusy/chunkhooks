@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -71,7 +71,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/atusy/chunkhooks/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -109,24 +109,28 @@
 <h1 class="hasAnchor">
 <a href="#basic-usage" class="anchor"></a>Basic usage</h1>
 <p><code><a href="../reference/hook_figure_unit.html">hook_figure_unit()</a></code> changes to the unit of figure size to millimeters. Note that this hook will not change the default size.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chunkhooks</span>)
-<span class="fu"><a href="../reference/hook_figure_unit.html">hook_figure_unit</a></span>()
-<span class="co">#&gt; fig.retina is set NULL</span></pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># fig.width=50, fig.height=50 (50mm * 50mm)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="fl">1</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://chunkhooks.atusy.net">chunkhooks</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/hook_figure_unit.html">hook_figure_unit</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; fig.retina is set NULL</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># fig.width=50, fig.height=50 (50mm * 50mm)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="figure-unit_files/figure-html/unnamed-chunk-2-1.png"><!-- --></p>
 <div id="other-units" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-units" class="anchor"></a>Other units</h2>
 <p>You may change default unit by the first argument, <code>unit</code>.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/hook_figure_unit.html">hook_figure_unit</a></span>(<span class="st">"cm"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/hook_figure_unit.html">hook_figure_unit</a></span><span class="op">(</span><span class="st">"cm"</span><span class="op">)</span></code></pre></div>
 <p>Choices are followings:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">measurements</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/measurements/man/conv_unit_options.html">conv_unit_options</a></span>$<span class="no">length</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">measurements</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/measurements/man/conv_unit_options.html">conv_unit_options</a></span><span class="op">$</span><span class="va">length</span>
 <span class="co">#&gt;  [1] "angstrom"   "nm"         "um"         "mm"         "cm"        </span>
 <span class="co">#&gt;  [6] "dm"         "m"          "km"         "inch"       "ft"        </span>
 <span class="co">#&gt; [11] "foot"       "feet"       "yd"         "yard"       "fathom"    </span>
 <span class="co">#&gt; [16] "mi"         "mile"       "naut_mi"    "au"         "light_yr"  </span>
-<span class="co">#&gt; [21] "light_year" "parsec"     "point"</span></pre></body></html></div>
+<span class="co">#&gt; [21] "light_year" "parsec"     "point"</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -146,7 +150,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

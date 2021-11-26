@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -71,7 +71,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/atusy/chunkhooks/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -102,28 +102,32 @@
 <div id="basic-usage" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basic-usage" class="anchor"></a>Basic usage</h1>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">chunkhooks</span>)
-<span class="fu"><a href="../reference/benchmark.html">hook_benchmark</a></span>()</pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># benchmark=TRUE is specified as a chunk option</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">100</span>))
-<span class="co">#&gt; [1] 5050</span></pre></body></html></div>
-<p>bench1: 4ms</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://chunkhooks.atusy.net">chunkhooks</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/benchmark.html">hook_benchmark</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># benchmark=TRUE is specified as a chunk option</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 5050</span></code></pre></div>
+<p>bench1: 5ms</p>
 <p>As the above result shows, output format contains chunk label. I recommend specifying chunk options explicitly. Note that this function is experimental, and format may change in the future.</p>
 </div>
 <div id="formatting-results" class="section level1">
 <h1 class="hasAnchor">
 <a href="#formatting-results" class="anchor"></a>Formatting results</h1>
 <p>If you do not like the default formatting, you may provide original function to the <code>format</code> argument. The function takes a result of a benchmark in seconds as the first argument, and a list of current chunk options as the second argument. The example below shows the benchmark result as is. Make sure the formatting function returns a string.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/benchmark.html">hook_benchmark</a></span>(<span class="kw">format</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">x</span>, <span class="no">options</span>) <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="no">x</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">100</span>))
-<span class="co">#&gt; [1] 5050</span></pre></body></html></div>
-<p>0.002</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/benchmark.html">hook_benchmark</a></span><span class="op">(</span>format <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">options</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 5050</span></code></pre></div>
+<p>0.00499999999999989</p>
 </div>
 <div id="insert-results-in-body-text" class="section level1">
 <h1 class="hasAnchor">
 <a href="#insert-results-in-body-text" class="anchor"></a>Insert results in body text</h1>
 <p>If you need to insert the result with the text, use <code><a href="../reference/benchmark.html">chunkhooks::benchmarks</a></code> environment. This environment records all the benchmark results in seconds. You can extract a result by specifying a chunk label.</p>
-<p>For example, <code>r benchmarks$bench1</code> gives 0.003.</p>
+<p>For example, <code>r benchmarks$bench1</code> gives 0.004.</p>
 </div>
   </div>
 
@@ -142,7 +146,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
