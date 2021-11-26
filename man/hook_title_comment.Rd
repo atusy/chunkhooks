@@ -6,7 +6,7 @@
 \usage{
 hook_title_comment(
   trigger = "title",
-  default = "#' {label}.{engine}",
+  default = "{engine}",
   args = list(),
   .set = TRUE
 )
@@ -16,7 +16,7 @@ hook_title_comment(
 
 \item{default}{A string or function as a default value of the \code{trigger}ing chunk option.
 If string, the value is given to \code{glue::glue}, and evaluates the expression
-by setting chunk options as an environment.
+by setting chunk options as an environment, and then automatically commented out.
 If function, it must have \code{options} parameter which receives chunk options,
 and return a string.}
 
@@ -25,5 +25,26 @@ and return a string.}
 \item{.set}{\code{TRUE} or \code{FALSE} to set a default value and a hook to the \code{trigger}.}
 }
 \description{
-Title of chunks can be determined and prepended based on chunk options.
+Prepend title comments to each chunks.
+By default, title is the name of the corresponding chunk engines.
+}
+\examples{
+# Set hook which comments engine names of each chunks at the beginning.
+hook_title_comment()
+
+# Customize format
+# For R chunks, let title comment be something like "chunk-label.R".
+# Otherwise, fall back to the default behavior.
+hook_title_comment(
+  default = function(options) {
+    if (options$engine == "R") {
+      return(sprintf("# \%s.\%s", options$label, options$engine))
+    }
+    return(comment_title(options, template = "{engine}"))
+  }
+)
+
+}
+\seealso{
+\code{\link[=comment_title]{comment_title()}}, \code{\link[=comment_out]{comment_out()}}, \code{\link[=comment_syntax]{comment_syntax()}}
 }
