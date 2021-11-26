@@ -1,3 +1,7 @@
+# chunkhooks 0.0.2
+
+* New `hook_comment_title` to prepend titles as comments to each chunks.
+
 # chunkhooks 0.0.1
 
 ## New features
